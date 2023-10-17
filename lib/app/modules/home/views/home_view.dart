@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/Search_bar_Filter_button.dart';
+import 'widgets/daftar_barang.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -23,13 +24,27 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: const Column(
+      body: Column(
         children: [
-          SearchAndFilter(),
+          const SearchAndFilter(),
+          DaftarBarang(),
+          SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            onPressed: () {}, 
+            child: const Row(
+              children: [
+                Text("Tambah Barang"),
+                Icon(Icons.add_circle)],
+            )
+            )
         ],
       ) 
     );
   }
 }
+
+
 
 

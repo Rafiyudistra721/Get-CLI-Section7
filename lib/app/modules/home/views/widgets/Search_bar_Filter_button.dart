@@ -11,8 +11,8 @@ class SearchAndFilter extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 1100,
-          padding: EdgeInsets.symmetric(horizontal: 29, vertical: 20),
+          width: 250,
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: TextField(
             autocorrect: false,
             keyboardType: TextInputType.text,
@@ -20,21 +20,15 @@ class SearchAndFilter extends StatelessWidget {
             decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.search),
                 border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
                 labelText: "Cari Produk",
                 hintText: "Ketik Produk yang anda inginkan"),
           ),
         ),
-        ElevatedButton.icon(
-          style: ButtonStyle(
-          ),
-          onPressed: () {},
-          icon: const Icon(
-            Icons.filter_alt,
-            size: 20,
-          ),
-          label: const Text("Filter"),
-        )
+        OutlinedButton.icon(
+            onPressed: () {},
+            icon: const Icon(Icons.filter_alt),
+            label: const Text("Filter"))
       ],
     );
   }

@@ -25,10 +25,13 @@ class SearchAndFilter extends StatelessWidget {
                 hintText: "Ketik Produk yang anda inginkan"),
           ),
         ),
-        OutlinedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.filter_alt),
-            label: const Text("Filter"))
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: OutlinedButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.filter_alt),
+              label: const Text("Filter")),
+        )
       ],
     );
   }

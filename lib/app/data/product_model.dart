@@ -6,7 +6,7 @@ class Product {
   double price;
   String description;
   String category;
-  NetworkImage image;
+  String image;
   Rating rating;
 
   Product({
@@ -30,13 +30,11 @@ class Rating {
   });
 }
 
-// List<Product> dummyItems() => [
-//   Product(
-//     id: 1, 
-//     title: "MSI Modern 14 i3 (11) C11M 9S7-14J312-244 Black", 
-//     price: 5690000, 
-//     description: "Modern 14 C11M-244ID-9S7-14J312-244 dengan fitur Cooler Boost, Hi-Res Audio, Military-Grade Durability, Type-C PD Charging", 
-//     category: "Laptop", 
-//     image: "assets/images/Product1.jpg", 
-//     rating: Rating(rate: 4.8, count: 34))
-// ];
+final Product product = Product(
+    id: 1, 
+    title: "MSI Modern 14 i3 (11) C11M 9S7-14J312-244 Black", 
+    price: 361.82, 
+    description: "Laptop ini dilengkapi dengan fitur Cooler Boost, Hi-Res Audio, Military-Grade Durability, Type-C PD Charging", 
+    category: "Laptop", 
+    image: "https://cdn1.smartprix.com/rx-i7ZSnyKNa-w1200-h1200/7ZSnyKNa.jpg", 
+    rating: Rating(rate: 4.8, count: 34));

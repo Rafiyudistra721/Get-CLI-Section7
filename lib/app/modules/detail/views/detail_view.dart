@@ -10,8 +10,20 @@ class DetailView extends GetView<DetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DetailView'),
-        centerTitle: true,
+        title: Row(
+          children: [
+            IconButton(
+                onPressed: () {}, icon: Image.asset('assets/icon/icon.png')),
+            const Text(
+              'Fake Store',
+              style: TextStyle(
+                  color: Color(0xff802c6e),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.white,
       ),
       body: const Center(
         child: Text(

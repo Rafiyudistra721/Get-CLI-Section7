@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_cli_app/app/modules/form/views/widgets/text_fields.dart';
 import '../controllers/form_controller.dart';
-import '../../../data/product_model.dart';
 import 'widgets/image_picker.dart';
+import '../../../style/button_style.dart';
 
 class FormView extends GetView<FormController> {
   const FormView({Key? key}) : super(key: key);
@@ -25,7 +26,16 @@ class FormView extends GetView<FormController> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: const ImagesPicker(),
+      body: Column(
+        children: [
+          const Flexible(child: ImagesPicker()), 
+          TextFields(),
+          ElevatedButton.icon(onPressed: () {}, 
+          icon: const Icon(Icons.check_circle), 
+          label: const Text("Selesai"),
+          style: buttonPrimary,)
+          ],
+      ),
     );
   }
 }

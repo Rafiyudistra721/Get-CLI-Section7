@@ -1,11 +1,11 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
-import '../../../../data/product_model.dart';
+import 'package:get/get.dart';
+import '../../controllers/home_controller.dart';
 
 class DaftarBarang extends StatelessWidget {
-  const DaftarBarang({
-    super.key,
-  });
-
+  final HomeController products = Get.find();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -13,7 +13,7 @@ class DaftarBarang extends StatelessWidget {
       child: GridView.builder(
         itemCount: 14,
         padding: const EdgeInsets.all(10),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 5,
             crossAxisSpacing: 5,
@@ -32,22 +32,29 @@ class DaftarBarang extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(9.0),
-                        child: Image.network(product.image),
+                        child: Image.network(products.allProducts[index].image),
                       ),
-                      Text(product.title, overflow: TextOverflow.ellipsis),
+                      Text(products.allProducts[index].title, overflow: TextOverflow.ellipsis),
                       Text(
-                        product.description,
-                        style: TextStyle(fontSize: 10),
+                        products.allProducts[index].description,
+                        style: const TextStyle(fontSize: 10),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text( r"$""${product.price}",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Text( r"$""${products.allProducts[index].price}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         overflow: TextOverflow.ellipsis
                         ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const Icon(Icons.star_sharp, color: Colors.yellow,),
+                          Text("${products.allProducts[index].rating}")
+                        ],
+                      )
           
                     ],
                   ),

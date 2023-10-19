@@ -31,7 +31,7 @@ class HomeView extends GetView<HomeController> {
         body: Column(
           children: [
             const SearchAndFilter(),
-            const DaftarBarang(),
+            DaftarBarang(),
             const SizedBox(
               height: 10,
             ),

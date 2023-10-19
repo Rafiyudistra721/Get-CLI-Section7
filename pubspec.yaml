@@ -34,3 +34,4 @@ flutter:
   assets:
     - assets/icon/icon.png
     - assets/images/Product1.jpg
+    - assets/icon/Upload_Image_Default.png

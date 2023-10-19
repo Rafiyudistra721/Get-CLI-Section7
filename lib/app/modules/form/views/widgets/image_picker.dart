@@ -18,42 +18,44 @@ class _ImagesPickerState extends State<ImagesPicker> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
-    return Scaffold(
-      body: Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      // mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          margin: const EdgeInsets.all(20),
+          margin: const EdgeInsets.all(10),
           width: size.width,
-          height: 250,
+          height: 210,
           child: DottedBorder(
               borderType: BorderType.RRect,
               radius: const Radius.circular(12),
               color: Colors.blueGrey,
               strokeWidth: 1,
               dashPattern: const [5, 5],
+              child: SizedBox.expand(
               child: FittedBox(
                   child: imageFile != null
-                      ? Image.file(File(imageFile!.path), fit: BoxFit.cover)
-                      : const Icon(
-                          Icons.image_outlined,
-                          color: Colors.blueGrey,
-                        ))),
+                      ? Image.file(File(imageFile!.path), 
+                      fit: BoxFit.cover)
+                      : Image.asset("assets/icon/Upload_Image_Default.png")
+                      ),
+                    )),
         ),
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  showPictureDialog();
+                },
+                label: const Text("Upload foto"),
+                icon: const Icon(Icons.image),
+                style: buttonPrimary,
+              ),
+            ),
         Padding(
-          padding: const EdgeInsets.all(10),
-          child: ElevatedButton.icon(
-            onPressed: () {
-              showPictureDialog();
-            },
-            label: const Text("Upload foto"),
-            icon: const Icon(Icons.image),
-            style: buttonPrimary,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: ElevatedButton.icon(
             onPressed: () {
               setState(() {
@@ -65,8 +67,10 @@ class _ImagesPickerState extends State<ImagesPicker> {
             style: buttonPrimary,
           ),
         ),
+          ],
+        ),
       ],
-    ));
+    );
   }
 
     Future<void> showPictureDialog() async {
@@ -74,28 +78,27 @@ class _ImagesPickerState extends State<ImagesPicker> {
         context: context,
         builder: (BuildContext context) {
           return SimpleDialog(
-            title: const Text('Select Action'),
+            title: const Text('Pilih Sumber'),
             children: [
               SimpleDialogOption(
                 onPressed: () {
                   getFromCamera();
                   Navigator.of(context).pop();
                 },
-                child: const Text('Open Camera'),
+                child: const Text('Buka Kamera'),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   getFromGallery();
                   Navigator.of(context).pop();
                 },
-                child: const Text('Open Gallery'),
+                child: const Text('Buka Galeri'),
               ),
             ],
           );
         });
   }
 
-    // get from gallery
   getFromGallery() async {
     final pickedFile = await imagePicker.pickImage(
       source: ImageSource.gallery,
@@ -109,7 +112,6 @@ class _ImagesPickerState extends State<ImagesPicker> {
     }
   }
 
-    // get from camera
   getFromCamera() async {
     final pickedFile = await imagePicker.pickImage(
       source: ImageSource.camera,

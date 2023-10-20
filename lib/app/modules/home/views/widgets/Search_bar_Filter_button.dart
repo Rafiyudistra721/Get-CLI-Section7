@@ -21,8 +21,8 @@ class SearchAndFilter extends StatelessWidget {
                 suffixIcon: const Icon(Icons.search),
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
-                labelText: "Cari Produk",
-                hintText: "Ketik Produk yang anda inginkan"),
+                labelText: "Search Product",
+                hintText: "Type the product you want"),
           ),
         ),
         Directionality(

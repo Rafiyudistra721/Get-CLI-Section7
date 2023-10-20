@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_cli_app/app/routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/Search_bar_Filter_button.dart';
-import 'widgets/daftar_barang.dart';
+import 'widgets/list_item.dart';
 import '../../../style/button_style.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -39,7 +39,7 @@ class HomeView extends GetView<HomeController> {
               textDirection: TextDirection.rtl,
               child: ElevatedButton.icon(
                 onPressed: () => Get.toNamed(Routes.FORM),
-                label: const Text("Tambah Barang"),
+                label: const Text("Add New Product"),
                 icon: const Icon(Icons.add_circle_outline),
                 style: buttonPrimary,
               ),

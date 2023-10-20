@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../home/controllers/home_controller.dart';
 import 'package:get/get.dart';
+import 'category_dropdown.dart';
+import '../../controllers/form_controller.dart';
 
-class TextFields extends StatelessWidget {
-  final HomeController products = Get.find();
-
-late final int index;
-
-
+class TextFields extends GetView<FormController> {
+  const TextFields({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,58 +15,46 @@ late final int index;
           padding: const EdgeInsets.all(10),
           children: [
             const Text(
-              "Informasi Produk",
+              "Product Information",
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 15,
             ),
             TextField(
-
+              controller: controller.titleC,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Color(0xff802c6e))),
-                  labelText: "Nama Produk"),
+                      borderSide: const BorderSide(color: Color(0xff802c6e))),
+                  labelText: "Product Name"),
             ),
             const SizedBox(
               height: 10,
             ),
-            DropdownButtonFormField(
-              decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Color(0xff802c6e))),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Color(0xff802c6e))),
-                  filled: true,
-                  labelText: "Kategori"),
-                  items: products.allProducts[index].category,
-                  onChanged: (value) {
-                    
-                  },
-            ),
+              const DropdownCategory(),
             const SizedBox(
               height: 10,
             ),
             TextField(
+              controller: controller.priceC,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Color(0xff802c6e))),
-                  labelText: "Harga"),
+                      borderSide: const BorderSide(color: Color(0xff802c6e))),
+                  labelText: "Price"),
             ),
             const SizedBox(
               height: 10,
             ),
             TextField(
+              controller: controller.descC,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Color(0xff802c6e))),
-                  labelText: "Deskripsi Produk"),
+                      borderSide: const BorderSide(color: Color(0xff802c6e))),
+                  labelText: "Product Description"),
             ),
           ],
         ),

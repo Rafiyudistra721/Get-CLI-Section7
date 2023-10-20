@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../style/button_style.dart';
 import 'package:dotted_border/dotted_border.dart';
+import '../../../home/controllers/home_controller.dart';
 
 class ImagesPicker extends StatefulWidget {
   const ImagesPicker({super.key});
@@ -44,25 +45,25 @@ class _ImagesPickerState extends State<ImagesPicker> {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
               child: ElevatedButton.icon(
                 onPressed: () {
                   showPictureDialog();
                 },
-                label: const Text("Upload foto"),
+                label: const Text("Upload Image"),
                 icon: const Icon(Icons.image),
                 style: buttonPrimary,
               ),
             ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
           child: ElevatedButton.icon(
             onPressed: () {
               setState(() {
                 imageFile = null;
               });
             },
-            label: const Text("Hapus foto"),
+            label: const Text("Delete Image"),
             icon: const Icon(Icons.delete),
             style: buttonPrimary,
           ),
@@ -78,21 +79,21 @@ class _ImagesPickerState extends State<ImagesPicker> {
         context: context,
         builder: (BuildContext context) {
           return SimpleDialog(
-            title: const Text('Pilih Sumber'),
+            title: const Text("Select Action"),
             children: [
               SimpleDialogOption(
                 onPressed: () {
                   getFromCamera();
                   Navigator.of(context).pop();
                 },
-                child: const Text('Buka Kamera'),
+                child: const Text("Open Camera"),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   getFromGallery();
                   Navigator.of(context).pop();
                 },
-                child: const Text('Buka Galeri'),
+                child: const Text("Open Gallery"),
               ),
             ],
           );

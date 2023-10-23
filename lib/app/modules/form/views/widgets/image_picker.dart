@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../style/button_style.dart';
 import 'package:dotted_border/dotted_border.dart';
-import '../../../home/controllers/home_controller.dart';
 
 class ImagesPicker extends StatefulWidget {
   const ImagesPicker({super.key});
@@ -34,13 +33,11 @@ class _ImagesPickerState extends State<ImagesPicker> {
               strokeWidth: 1,
               dashPattern: const [5, 5],
               child: SizedBox.expand(
-              child: FittedBox(
-                  child: imageFile != null
-                      ? Image.file(File(imageFile!.path), 
-                      fit: BoxFit.cover)
-                      : Image.asset("assets/icon/Upload_Image_Default.png")
-                      ),
-                    )),
+                child: FittedBox(
+                    child: imageFile != null
+                        ? Image.file(File(imageFile!.path), fit: BoxFit.cover)
+                        : Image.asset("assets/icon/Upload_Image_Default.png")),
+              )),
         ),
         Row(
           children: [
@@ -55,26 +52,26 @@ class _ImagesPickerState extends State<ImagesPicker> {
                 style: buttonPrimary,
               ),
             ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
-          child: ElevatedButton.icon(
-            onPressed: () {
-              setState(() {
-                imageFile = null;
-              });
-            },
-            label: const Text("Delete Image"),
-            icon: const Icon(Icons.delete),
-            style: buttonPrimary,
-          ),
-        ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  setState(() {
+                    imageFile = null;
+                  });
+                },
+                label: const Text("Delete Image"),
+                icon: const Icon(Icons.delete),
+                style: buttonPrimary,
+              ),
+            ),
           ],
         ),
       ],
     );
   }
 
-    Future<void> showPictureDialog() async {
+  Future<void> showPictureDialog() async {
     await showDialog<void>(
         context: context,
         builder: (BuildContext context) {
@@ -125,6 +122,4 @@ class _ImagesPickerState extends State<ImagesPicker> {
       });
     }
   }
-
 }
-

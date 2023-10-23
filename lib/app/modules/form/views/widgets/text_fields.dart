@@ -21,7 +21,8 @@ class TextFields extends GetView<FormController> {
             const SizedBox(
               height: 15,
             ),
-            TextField(
+            TextFormField(
+              validator: (value) => value == null ? 'Product name cannot be empty' : null,
               controller: controller.titleC,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -32,11 +33,12 @@ class TextFields extends GetView<FormController> {
             const SizedBox(
               height: 10,
             ),
-              const DropdownCategory(),
+            const DropdownCategory(),
             const SizedBox(
               height: 10,
             ),
-            TextField(
+            TextFormField(
+              validator: (value) => value == null ? 'Product price cannot be empty' : null,
               controller: controller.priceC,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -48,7 +50,8 @@ class TextFields extends GetView<FormController> {
             const SizedBox(
               height: 10,
             ),
-            TextField(
+            TextFormField(
+              validator: (value) => value == null ? 'Product description cannot be empty' : null,
               controller: controller.descC,
               decoration: InputDecoration(
                   border: OutlineInputBorder(

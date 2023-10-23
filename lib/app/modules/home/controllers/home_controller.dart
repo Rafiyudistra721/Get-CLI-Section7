@@ -1,22 +1,22 @@
 import 'package:get/get.dart';
 
 class Product {
-  String id;
-  String title;
-  double price;
-  String description;
-  String category;
-  String image;
-  Rating rating;
+  String? id;
+  String? title;
+  double? price;
+  String? description;
+  String? category;
+  String? image;
+  Rating? rating;
 
   Product({
-    required this.id,
-    required this.title,
-    required this.price,
-    required this.description,
-    required this.category,
-    required this.image,
-    required this.rating,
+    this.id,
+    this.title,
+    this.price,
+    this.description,
+    this.category,
+    this.image,
+    this.rating,
   });
 }
 
@@ -55,7 +55,7 @@ class HomeController extends GetxController {
       description: "Mechanical Keyboard Merk Royal Kludge dengan varian warna White Night", 
       category: "Keyboard", 
       image: "https://m.media-amazon.com/images/I/61pqTXXaZTL.jpg", 
-      rating: Rating(rate: 5, count: 21))
+      rating: Rating(rate: 4.4, count: 21))
     ].obs; 
 
     void addProduct(String image, String title, String price, String desc, String category) {

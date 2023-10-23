@@ -6,13 +6,14 @@ environment:
   sdk: '>=3.1.1 <4.0.0'
 
 dependencies: 
-  flutter: 
-    sdk: flutter
   google_fonts: ^6.1.0
   dotted_border: ^2.1.0
   image_picker: ^1.0.2
   cupertino_icons: ^1.0.2
   get: 4.6.6
+  http: 1.1.0
+  flutter: 
+    sdk: flutter
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
@@ -20,18 +21,17 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
-  uses-material-design: true
-
-  fonts:
+  fonts: 
     - family: Poppins
-      fonts:
+      fonts: 
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
         - asset: assets/fonts/Poppins-Light.ttf
           weight: 300
-
-  assets:
+  assets: 
     - assets/icon/icon.png
     - assets/images/Product1.jpg
     - assets/icon/Upload_Image_Default.png
+  uses-material-design: true
+

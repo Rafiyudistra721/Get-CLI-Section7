@@ -7,8 +7,10 @@ import '../../../style/button_style.dart';
 import '../../home/controllers/home_controller.dart';
 
 class FormView extends GetView<FormController> {
-    final products = Get.find<HomeController>();
+  final products = Get.find<HomeController>();
+  final _dropdownFormKey = GlobalKey<FormState>();
   FormView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,10 @@ class FormView extends GetView<FormController> {
         title: Row(
           children: [
             IconButton(
-                onPressed: () {}, icon: Image.asset('assets/icon/icon.png')),
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Image.asset('assets/icon/icon.png')),
             const Text(
               'Fake Store',
               style: TextStyle(
@@ -28,17 +33,25 @@ class FormView extends GetView<FormController> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: Column(
-        children: [
-          const Flexible(child: ImagesPicker()), 
-          TextFields(),
-          ElevatedButton.icon(onPressed: () {
-            // return products.addProduct(image, controller.titleC.text, controller.priceC.text, controller.descC.text, category);
-          }, 
-          icon: const Icon(Icons.check_circle), 
-          label: const Text("Confirm"),
-          style: buttonPrimary,)
+      body: Form(
+        key: _dropdownFormKey,
+        child: Column(
+          children: [
+            const Flexible(child: ImagesPicker()),
+            TextFields(),
+            ElevatedButton.icon(
+              onPressed: () {
+                if (_dropdownFormKey.currentState!.validate()) {
+                  
+                }
+                // return products.addProduct(image, controller.titleC.text, controller.priceC.text, controller.descC.text, category);
+              },
+              icon: const Icon(Icons.check_circle),
+              label: const Text("Confirm"),
+              style: buttonPrimary,
+            )
           ],
+        ),
       ),
     );
   }

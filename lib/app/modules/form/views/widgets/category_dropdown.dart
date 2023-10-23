@@ -17,12 +17,12 @@ class _DropdownCategoryState extends State<DropdownCategory> {
 
   List<DropdownMenuItem<String>> get dropdownItems{
   List<DropdownMenuItem<String>> dropdownCategory = [
-    DropdownMenuItem(value: "Laptop",child: Text(products.allProducts[0].category),),
-    DropdownMenuItem(value: "Keyboard",child: Text(products.allProducts[2].category),)
+    DropdownMenuItem(value: "Laptop",child: Text(products.allProducts[0].category ??""),),
+    DropdownMenuItem(value: "Keyboard",child: Text(products.allProducts[2].category ??""),)
   ];
   return dropdownCategory;
 }
-String selectedValue = "Laptop";
+String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ String selectedValue = "Laptop";
                       borderSide: BorderSide(color: Color(0xff802c6e))),
                   filled: true,
                   labelText: "Category"),
+                  validator: (value) => value == null ? "Select a Category" : null,
                   items: dropdownItems,
                   onChanged: (String? newValue) {
                     setState(() {

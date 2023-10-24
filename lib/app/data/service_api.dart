@@ -7,7 +7,7 @@ import 'product_model.dart';
 class ServiceApi {
   String apiUrl = 'https://fakestoreapi.com/products';
 
-  Future<List<Product>> getProduct() async {
+  Future<List<Product>> getProducts() async {
     var res = await http.get(Uri.parse('$apiUrl'));
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);

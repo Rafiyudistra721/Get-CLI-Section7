@@ -22,7 +22,9 @@ class TextFields extends GetView<FormController> {
               height: 15,
             ),
             TextFormField(
-              validator: (value) => value == null ? 'Product name cannot be empty' : null,
+              validator: (value) => value == null || value == ''
+                  ? 'Product Name is required'
+                  : null,
               controller: controller.titleC,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -38,7 +40,11 @@ class TextFields extends GetView<FormController> {
               height: 10,
             ),
             TextFormField(
-              validator: (value) => value == null ? 'Product price cannot be empty' : null,
+              validator: (value) => value == null || value == ''
+                  ? 'Product Price is required'
+                  : controller.checkIsDouble(value) == false
+                      ? 'Wrong Value'
+                      : null,
               controller: controller.priceC,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -51,7 +57,9 @@ class TextFields extends GetView<FormController> {
               height: 10,
             ),
             TextFormField(
-              validator: (value) => value == null ? 'Product description cannot be empty' : null,
+              validator: (value) => value == null || value == ''
+                  ? 'Product Description is required'
+                  : null,
               controller: controller.descC,
               decoration: InputDecoration(
                   border: OutlineInputBorder(

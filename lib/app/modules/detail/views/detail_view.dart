@@ -3,13 +3,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_cli_app/app/data/product_model.dart';
+import 'package:get_cli_app/app/routes/app_pages.dart';
 
 import '../controllers/detail_controller.dart';
-import '../../home/controllers/home_controller.dart';
+import '../../../data/service_api.dart';
 
 class DetailView extends GetView<DetailController> {
-  Product products = Get.arguments ?? Product();
   DetailView({Key? key}) : super(key: key);
+  Product product = Get.arguments?? Product();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -45,7 +47,7 @@ class DetailView extends GetView<DetailController> {
                 child: Card(
                   child: SizedBox.expand(
                     child: FittedBox(
-                      child: Image.network(products.image ?? ""),
+                      child: Image.network(product.image ?? ""),
                     ),
                   ),
                 ),
@@ -53,7 +55,7 @@ class DetailView extends GetView<DetailController> {
               const SizedBox(
                 height: 20,
               ),
-              Text(products.title ?? ""),
+              Text(product.title ?? ""),
               const SizedBox(
                 height: 10,
               ),
@@ -88,7 +90,7 @@ class DetailView extends GetView<DetailController> {
                     width: 5,
                   ),
                   Text(
-                    "${products.rating?.rate} | ${products.rating?.count}",
+                    "${product.rating?.rate} | ${product.rating?.count}",
                     style: const TextStyle(fontSize: 12),
                   )
                 ],
@@ -97,7 +99,7 @@ class DetailView extends GetView<DetailController> {
                 height: 10,
               ),
               Text(
-                r"$" "${products.price}",
+                r"$" "${product.price}",
                 style:
                     const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
@@ -112,7 +114,7 @@ class DetailView extends GetView<DetailController> {
                 height: 5,
               ),
               Text(
-                products.description ?? "",
+                product.description ?? "",
                 style: const TextStyle(fontSize: 12),
               ),
               const SizedBox(
@@ -120,7 +122,7 @@ class DetailView extends GetView<DetailController> {
               ),
               Container(
                 margin: const EdgeInsets.all(10),
-                width: 110,
+                width: 190,
                 height: 30,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -129,19 +131,21 @@ class DetailView extends GetView<DetailController> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const Icon(Icons.sell_outlined),
-                    Text(products.category ?? "")
+                    Text(product.category ?? "")
                   ],
                 ),
               ),
               const SizedBox(
-                height: 60,
+                height: 20,
               ),
               Align(
                   alignment: Alignment.bottomRight,
                   child: FloatingActionButton(
                     heroTag: 'edit btn',
                     backgroundColor: Colors.yellow[700],
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.FORM, arguments: product);
+                    },
                     child: const Icon(Icons.edit),
                   )),
               const SizedBox(

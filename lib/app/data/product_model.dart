@@ -1,5 +1,23 @@
+class Rating {
+  double? rate;
+  int? count;
+
+  Rating({
+    this.rate,
+    this.count,
+  });
+
+  Rating fromJson(Map<String, dynamic> json) {
+    return Rating(
+      rate: json['rate'].toDouble(),
+      count: json['count'].toInt()
+    );
+
+  }
+}
+
 class Product {
-  String? id;
+  int? id;
   String? title;
   double? price;
   String? description;
@@ -25,7 +43,7 @@ class Product {
       description: json['description'],
       category: json['category'],
       image: json['image'],
-      rating: json['rating']
+      rating: Rating().fromJson(json['rating'])
     );
   }
 
@@ -42,13 +60,4 @@ class Product {
   }
 }
 
-class Rating {
-  double? rate;
-  int? count;
-
-  Rating({
-    this.rate,
-    this.count,
-  });
-}
 

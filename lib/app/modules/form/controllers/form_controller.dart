@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_cli_app/app/data/product_model.dart';
@@ -10,7 +12,6 @@ class FormController extends GetxController {
   TextEditingController titleC = TextEditingController();
   TextEditingController priceC = TextEditingController();
   TextEditingController descC = TextEditingController();
-  TextEditingController categoryC = TextEditingController();
 
   bool checkIsDouble(String? text) {
     try {
@@ -22,7 +23,7 @@ class FormController extends GetxController {
   }
 
   modelToController(Product product) {
-    // imageC
+    imageC.text = product.image ?? '';
     titleC.text = product.title ?? '';
     priceC.text = (product.price ?? '').toString();
     descC.text = product.description ?? '';
@@ -30,7 +31,23 @@ class FormController extends GetxController {
   }
 
   controllerToModel(Product product) {
-    // product.image = 
-    
+    product.image = imageC.text;
+    product.title = titleC.text;
+    product.price = double.tryParse(priceC.text);
+    product.description = descC.text;
+
+  }
+
+  Future storeProduct(Product product, bool isUpdate) async {
+    try {
+      product = controllerToModel(product);
+      isUpdate == false
+          ? await serviceApi.createProduct(product)
+          : await serviceApi.updateProduct(product);
+      Get.back();
+      Get.snackbar("SUCCESS", "Product has been saved");
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

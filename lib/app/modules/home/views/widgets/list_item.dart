@@ -15,7 +15,7 @@ class DaftarBarang extends GetView<HomeController> {
             builder: (context, snapshot) => snapshot.connectionState ==
                     ConnectionState.waiting
                 ? const Center(child: CircularProgressIndicator())
-                : Container(
+                : SizedBox(
                     height: Get.height * 0.8,
                     child: GridView.builder(
                       itemCount: controller.listProduct.length,

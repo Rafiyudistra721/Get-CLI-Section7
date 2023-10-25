@@ -11,6 +11,8 @@ import '../../../style/button_style.dart';
 class FormView extends GetView<FormController> {
   final formKey = GlobalKey<FormState>();
   Product product = Get.arguments ?? Product();
+
+  FormView({super.key});
   @override
   Widget build(BuildContext context) {
     controller.modelToController(product);
@@ -39,7 +41,7 @@ class FormView extends GetView<FormController> {
           key: formKey,
           child: Column(
             children: [
-              const Expanded(child: ImagesPicker()),
+              const ImagesPicker(),
               const TextFields(),
               ElevatedButton.icon(
                 onPressed: () async {

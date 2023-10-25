@@ -7,7 +7,6 @@ import 'package:get_cli_app/app/data/product_model.dart';
 import 'package:get_cli_app/app/routes/app_pages.dart';
 
 import '../controllers/detail_controller.dart';
-import '../../../data/service_api.dart';
 
 class DetailView extends GetView<DetailController> {
   DetailView({Key? key}) : super(key: key);

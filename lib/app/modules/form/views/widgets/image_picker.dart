@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_cli_app/app/data/product_model.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../style/button_style.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -14,6 +16,7 @@ class ImagesPicker extends StatefulWidget {
 class _ImagesPickerState extends State<ImagesPicker> {
   File? imageFile;
   final imagePicker = ImagePicker();
+  Product product = Get.arguments ?? Product();
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,13 @@ class _ImagesPickerState extends State<ImagesPicker> {
               dashPattern: const [5, 5],
               child: SizedBox.expand(
                 child: FittedBox(
-                    child: imageFile != null
-                        ? Image.file(File(imageFile!.path), fit: BoxFit.cover)
-                        : Image.asset("assets/icon/Upload_Image_Default.png")),
+                    child: product.image == ""
+                        ? Image.network(product.image ?? '')
+                        : imageFile != null
+                            ? Image.file(File(imageFile!.path),
+                                fit: BoxFit.cover)
+                            : Image.asset(
+                                "assets/icon/Upload_Image_Default.png")),
               )),
         ),
         Row(

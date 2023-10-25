@@ -37,7 +37,7 @@ class _ImagesPickerState extends State<ImagesPicker> {
               dashPattern: const [5, 5],
               child: SizedBox.expand(
                 child: FittedBox(
-                    child: product.image == ""
+                    child: product.image != null
                         ? Image.network(product.image ?? '')
                         : imageFile != null
                             ? Image.file(File(imageFile!.path),

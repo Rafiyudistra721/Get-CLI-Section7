@@ -5,6 +5,7 @@ import '../../../data/product_model.dart';
 import '../../../data/service_api.dart';
 
 class DetailController extends GetxController {
+  RxList<Product> listProduct = <Product>[].obs;
   ServiceApi serviceApi = ServiceApi();
 
   Future<Product> getSingleProduct(String id) async{

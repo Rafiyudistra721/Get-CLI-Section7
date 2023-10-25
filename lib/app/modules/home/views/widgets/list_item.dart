@@ -46,7 +46,7 @@ class DaftarBarang extends GetView<HomeController> {
                                         child: Image.network(
                                           controller.listProduct[index].image ??
                                               "",
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
                                         ),
                                       ),
                                     ),

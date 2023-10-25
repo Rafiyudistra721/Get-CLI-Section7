@@ -134,9 +134,6 @@ class DetailView extends GetView<DetailController> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
               Align(
                   alignment: Alignment.bottomRight,
                   child: FloatingActionButton(
@@ -229,7 +226,10 @@ class DetailView extends GetView<DetailController> {
                                             backgroundColor: Colors.white,
                                             side: const BorderSide(
                                                 color: Color(0xff802c6e))),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          // controller.deleteProduct(
+                                            // controller.listProduct[]);
+                                        },
                                         child: const Text(
                                           "Yes",
                                           style: TextStyle(

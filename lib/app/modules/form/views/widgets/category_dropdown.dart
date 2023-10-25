@@ -1,9 +1,6 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 // import '../../controllers/form_controller.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
 
 class DropdownCategory extends StatefulWidget {
   const DropdownCategory({super.key});
@@ -15,33 +12,20 @@ class DropdownCategory extends StatefulWidget {
 class _DropdownCategoryState extends State<DropdownCategory> {
   String? dropdownvalue;
 
-  Future<List<String>> getAllCategory() async {
-    var baseUrl = "https://fakestoreapi.com/products/categories";
-
-    http.Response response = await http.get(Uri.parse(baseUrl));
-
-    if (response.statusCode == 200) {
-      List<String> category = [];
-      var jsonData = jsonDecode(response.body) as List;
-      for (var element in jsonData) {
-        category.add(element["ClassName"]);
-      }
-      return category;
-    } else {
-      throw response.statusCode;
-    }
-  }
+List<DropdownMenuItem<String>> get dropdownItems{
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(value: "Electronics", child: Text("Electronics")),
+    const DropdownMenuItem(value: "jewelery", child: Text("jewelery")),
+    const DropdownMenuItem(value: "men's clothing", child: Text("men's clothing")),
+    const DropdownMenuItem(value: "women's clothing", child: Text("women's clothing")),
+  ];
+  return menuItems;
+}
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: FutureBuilder<List<String>>(
-      future: getAllCategory(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          var data = snapshot.data!;
-          return DropdownButtonFormField(
-            value: dropdownvalue ?? data[0],
+    return DropdownButtonFormField(
+            value: dropdownvalue,
             decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -52,22 +36,13 @@ class _DropdownCategoryState extends State<DropdownCategory> {
                 filled: true,
                 labelText: "Category"),
             validator: (value) => value == null ? "Select a Category" : null,
-            items: data.map((String category) {
-              return DropdownMenuItem(
-                value: category,
-                child: Text(category),
-              );
-            }).toList(),
+            items: dropdownItems,
             onChanged: (String? newValue) {
               setState(() {
                 dropdownvalue = newValue!;
               });
             },
           );
-        } else {
-          return const CircularProgressIndicator();
-        }
-      },
-    ));
+    
   }
 }

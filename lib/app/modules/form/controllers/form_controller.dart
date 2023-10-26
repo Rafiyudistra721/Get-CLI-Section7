@@ -8,10 +8,14 @@ import '../../../data/service_api.dart';
 class FormController extends GetxController {
   ServiceApi serviceApi = ServiceApi();
 
-  TextEditingController imageC = TextEditingController();
   TextEditingController titleC = TextEditingController();
   TextEditingController priceC = TextEditingController();
   TextEditingController descC = TextEditingController();
+
+  var dropdownvalue = ''.obs;
+  void setSelectedValue(String value) {
+    dropdownvalue.value = value;
+  }
 
   bool checkIsDouble(String? text) {
     try {
@@ -23,7 +27,6 @@ class FormController extends GetxController {
   }
 
   modelToController(Product product) {
-    imageC.text = product.image ?? '';
     titleC.text = product.title ?? '';
     priceC.text = (product.price ?? '').toString();
     descC.text = product.description ?? '';
@@ -31,7 +34,6 @@ class FormController extends GetxController {
   }
 
   controllerToModel(Product product) {
-    product.image = imageC.text;
     product.title = titleC.text;
     product.price = double.tryParse(priceC.text);
     product.description = descC.text;

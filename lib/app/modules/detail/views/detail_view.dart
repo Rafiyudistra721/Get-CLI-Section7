@@ -9,7 +9,6 @@ import 'package:get_cli_app/app/routes/app_pages.dart';
 import '../controllers/detail_controller.dart';
 
 class DetailView extends GetView<DetailController> {
-  DetailView({Key? key}) : super(key: key);
   Product product = Get.arguments?? Product();
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class DetailView extends GetView<DetailController> {
             children: [
               IconButton(
                   onPressed: () {
-                    Get.back();
+                    Get.toNamed(Routes.HOME);
                   }, 
                   icon: Image.asset('assets/icon/icon.png')),
               const Text(
@@ -227,8 +226,8 @@ class DetailView extends GetView<DetailController> {
                                             side: const BorderSide(
                                                 color: Color(0xff802c6e))),
                                         onPressed: () {
-                                          // controller.deleteProduct(
-                                            // controller.listProduct[]);
+                                          controller.deleteProduct(product);
+                                          Get.back();
                                         },
                                         child: const Text(
                                           "Yes",

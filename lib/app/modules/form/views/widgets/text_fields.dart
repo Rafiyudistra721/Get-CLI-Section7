@@ -26,6 +26,8 @@ class TextFields extends GetView<FormController> {
                   ? 'Product Name is required'
                   : null,
               controller: controller.titleC,
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -35,7 +37,7 @@ class TextFields extends GetView<FormController> {
             const SizedBox(
               height: 10,
             ),
-            const DropdownCategory(),
+            DropdownCategory(),
             const SizedBox(
               height: 10,
             ),
@@ -47,6 +49,7 @@ class TextFields extends GetView<FormController> {
                       : null,
               controller: controller.priceC,
               keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -61,6 +64,8 @@ class TextFields extends GetView<FormController> {
                   ? 'Product Description is required'
                   : null,
               controller: controller.descC,
+              keyboardType: TextInputType.multiline,
+              textInputAction: TextInputAction.newline,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),

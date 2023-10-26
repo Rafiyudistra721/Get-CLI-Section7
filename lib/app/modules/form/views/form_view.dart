@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_cli_app/app/data/product_model.dart';
+import 'package:get_cli_app/app/routes/app_pages.dart';
 import 'widgets/text_fields.dart';
 import '../controllers/form_controller.dart';
 import 'widgets/image_picker.dart';
@@ -22,7 +23,7 @@ class FormView extends GetView<FormController> {
           children: [
             IconButton(
                 onPressed: () {
-                  Get.back();
+                  Get.toNamed(Routes.HOME);
                 },
                 icon: Image.asset('assets/icon/icon.png')),
             const Text(

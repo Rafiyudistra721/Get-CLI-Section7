@@ -12,7 +12,13 @@ class Rating {
       rate: json['rate'].toDouble(),
       count: json['count'].toInt()
     );
+  }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'rate' : rate,
+      'count' : count
+    };
   }
 }
 

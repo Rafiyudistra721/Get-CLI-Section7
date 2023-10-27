@@ -46,10 +46,10 @@ class FormView extends GetView<FormController> {
               const TextFields(),
               ElevatedButton.icon(
                 onPressed: () async {
-                  formKey.currentState!.validate() == true
+                  formKey.currentState?.validate() == true
                   ? await controller.storeProduct(
-                    product, (product.id != null) ? true : false)
-                    : Get.snackbar('Error', 'Data Invalid');
+                        product, (product.id != null) ? true : false)
+                  : Get.snackbar('Error', 'Data Invalid');
                 },
                 icon: const Icon(Icons.check_circle),
                 label: const Text("Confirm"),

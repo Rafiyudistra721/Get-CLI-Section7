@@ -10,6 +10,8 @@ import '../controllers/detail_controller.dart';
 
 class DetailView extends GetView<DetailController> {
   Product product = Get.arguments?? Product();
+
+  DetailView({super.key});
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -227,7 +229,7 @@ class DetailView extends GetView<DetailController> {
                                                 color: Color(0xff802c6e))),
                                         onPressed: () {
                                           controller.deleteProduct(product);
-                                          Get.back();
+                                          Get.toNamed(Routes.HOME);
                                         },
                                         child: const Text(
                                           "Yes",

@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
 
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_cli_app/app/data/product_model.dart';
 import '../../../data/service_api.dart';
+import 'package:flutter/material.dart';
 
 class FormController extends GetxController {
   ServiceApi serviceApi = ServiceApi();
@@ -30,14 +30,16 @@ class FormController extends GetxController {
     titleC.text = product.title ?? '';
     priceC.text = (product.price ?? '').toString();
     descC.text = product.description ?? '';
-
+    dropdownvalue.value = product.category?? '';
+    
   }
 
   controllerToModel(Product product) {
     product.title = titleC.text;
     product.price = double.tryParse(priceC.text);
     product.description = descC.text;
-
+    product.category = dropdownvalue.value;
+    return product;
   }
 
   Future storeProduct(Product product, bool isUpdate) async {
